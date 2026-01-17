@@ -1,0 +1,9 @@
+@use '@/styles/globalColors' as *;
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.page { @include flex-column; gap: $spacing-xl; }
+.title { @include heading-1; margin: 0; }
+.loading, .empty { @include flex-center; padding: $spacing-3xl; color: $color-text-muted; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: $spacing-lg; }
+.categoryCard { @include flex-column; gap: $spacing-sm; padding: $spacing-xl !important; h3 { margin: 0; font-size: $font-size-lg; color: $color-text-primary; } p { font-size: $font-size-sm; color: $color-text-muted; margin: 0; } }

@@ -1,0 +1,15 @@
+@use '@/styles/globalColors' as *;
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.page { @include flex-column; gap: $spacing-xl; }
+.title { @include heading-1; margin: 0; }
+.loading, .empty { @include flex-center; padding: $spacing-3xl; color: $color-text-muted; }
+.list { @include flex-column; gap: $spacing-md; }
+.ratingCard { display: flex; align-items: center; gap: $spacing-lg; padding: $spacing-lg !important; }
+.rank { font-size: $font-size-2xl; font-weight: $font-weight-bold; color: $color-accent; min-width: 50px; }
+.content { flex: 1; h3 { margin: 0 0 $spacing-xs; font-size: $font-size-lg; } p { margin: 0 0 $spacing-sm; font-size: $font-size-sm; color: $color-text-muted; } }
+.meta { display: flex; gap: $spacing-md; align-items: center; font-size: $font-size-sm; color: $color-text-secondary; }
+.votes { text-align: center; }
+.voteCount { display: block; font-size: $font-size-2xl; font-weight: $font-weight-bold; color: $color-primary; }
+.voteLabel { font-size: $font-size-xs; color: $color-text-muted; }
