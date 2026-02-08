@@ -58,7 +58,7 @@ export class DataStore {
   createCategory = async (data: CategoryFormData): Promise<Category | null> => {
     if (!authStore.canManageCategories()) return null;
     const now = new Date().toISOString();
-    const cat: Category = { id: uuidv4(), ...data, isActive: true, createdAt: now, updatedAt: now };
+    const cat: Category = { id: uuidv4(), ...data, description: data.description || '', color: data.color || '', isActive: true, createdAt: now, updatedAt: now };
     try { await FirebaseService.setData(`categories/${cat.id}`, cat); runInAction(() => { this.categories.push(cat); }); return cat; } catch { return null; }
   };
 

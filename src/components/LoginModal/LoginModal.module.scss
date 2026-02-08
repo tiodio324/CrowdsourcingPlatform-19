@@ -2,72 +2,67 @@
 @use '@/styles/variables' as *;
 @use '@/styles/mixins' as *;
 
+// Crowdsourcing: Круглые кнопки с анимацией
 .form {
   @include flex-column;
-  gap: $spacing-lg;
+  gap: $spacing-xl;
+  align-items: center;
 }
 
 .roleSelector {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: $spacing-md;
-
-  @media (max-width: 420px) {
-    grid-template-columns: 1fr;
-  }
+  display: flex;
+  gap: $spacing-2xl;
+  justify-content: center;
 }
 
 .roleButton {
   @include flex-column;
   @include flex-center;
-  gap: $spacing-sm;
-  padding: $spacing-lg;
+  gap: $spacing-md;
+  width: 120px;
+  height: 120px;
+  padding: $spacing-md;
   background: $color-bg-secondary;
-  border: 2px solid $color-border-light;
-  border-radius: $radius-lg;
+  border: 3px solid $color-border-light;
+  border-radius: 50%;
   cursor: pointer;
-  transition: all $transition-fast;
+  transition: all $transition-smooth;
   
   svg {
-    width: 32px;
-    height: 32px;
+    width: 36px;
+    height: 36px;
     color: $color-text-muted;
-    transition: color $transition-fast;
+    transition: all $transition-smooth;
   }
   
   span {
-    font-size: $font-size-sm;
-    font-weight: $font-weight-medium;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-bold;
     color: $color-text-secondary;
-    transition: color $transition-fast;
+    text-align: center;
   }
   
   &:hover {
-    border-color: $color-primary-light;
-    background: $color-bg-tertiary;
+    transform: scale(1.1) rotate(5deg);
+    border-color: $color-primary;
+    box-shadow: 0 12px 32px rgba($color-primary, 0.3);
     
-    svg {
-      color: $color-primary;
-    }
+    svg { color: $color-primary; transform: scale(1.2); }
   }
   
   &.active {
-    border-color: $color-primary;
-    background: rgba($color-primary, 0.05);
+    background: linear-gradient(135deg, $color-primary 0%, $color-primary-dark 100%);
+    border-color: transparent;
+    transform: scale(1.05);
+    box-shadow: 0 8px 24px rgba($color-primary, 0.4);
     
-    svg {
-      color: $color-primary;
-    }
-    
-    span {
-      color: $color-primary;
-    }
+    svg { color: $color-text-inverse; }
+    span { color: $color-text-inverse; }
   }
 }
 
-.hint {
-  text-align: center;
-  font-size: $font-size-xs;
-  color: $color-text-muted;
-  margin: 0;
+.actions {
+  @include flex-center;
+  gap: $spacing-lg;
+  width: 100%;
 }

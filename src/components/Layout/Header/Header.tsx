@@ -48,7 +48,11 @@ export const Header = observer(() => {
         </div>
       </div>
 
-      <h1 className={styles.title}>{pageTitle}</h1>
+      <div className={styles.center}>
+        <div className={styles.titleBadge}>
+          <h1 className={styles.title}>{pageTitle}</h1>
+        </div>
+      </div>
 
       <div className={styles.right}>
         {isAuthenticated ? (

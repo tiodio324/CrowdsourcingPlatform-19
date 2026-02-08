@@ -11,7 +11,7 @@ export class NavigationStore {
   get currentPageConfig(): PageConfig { return PAGES_CONFIG[this.currentPage]; }
   get pageTitle(): string { return this.currentPageConfig.title; }
 
-  navigate = (pageId: PageId): void => { const p = PAGES_CONFIG[pageId]; if (!p) return; if (p.requiresAuth && !authStore.isAuthenticated) { authStore.openLoginModal(); return; } if (p.requiredRole === 'admin' && !authStore.isAdmin) return; this.currentPage = pageId; this.closeMobileMenu(); };
+  navigate = (pageId: PageId): void => { const p = PAGES_CONFIG[pageId]; if (!p) return; if (p.requiresAuth && !authStore.isAuthenticated) { authStore.openLoginModal(); return; } if (p.requiredRole === 'admin' && !authStore.isAdmin) return; if (p.requiredRole === 'contributor' && !authStore.isContributor) return; this.currentPage = pageId; this.closeMobileMenu(); };
   toggleSidebar = (): void => { this.sidebarOpen = !this.sidebarOpen; };
   closeMobileMenu = (): void => { this.mobileMenuOpen = false; };
   toggleMobileMenu = (): void => { this.mobileMenuOpen = !this.mobileMenuOpen; };

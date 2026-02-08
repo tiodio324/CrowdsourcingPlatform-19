@@ -2,88 +2,74 @@
 @use '@/styles/variables' as *;
 @use '@/styles/mixins' as *;
 
+// Crowdsourcing: Карточки с градиентной рамкой
 .card {
-  @include card;
   display: flex;
   flex-direction: column;
+  background: $color-bg-primary;
   border-radius: $radius-xl;
-  border: 1px solid rgba($color-border-primary, 0.5);
-  backdrop-filter: blur(8px);
-}
-
-// Variants
-.default {
-  background: $color-bg-primary;
-}
-
-.outlined {
-  background: transparent;
-  box-shadow: none;
-  border: 2px solid $color-border-primary;
-}
-
-.elevated {
-  background: $color-bg-primary;
-  box-shadow: $shadow-lg;
-}
-
-// Padding
-.padding-none {
-  .content {
-    padding: 0;
+  overflow: hidden;
+  position: relative;
+  transition: all $transition-smooth;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: $radius-xl;
+    padding: 2px;
+    background: linear-gradient(135deg, $color-border-light, $color-border-light);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    transition: background $transition-smooth;
   }
 }
 
-.padding-sm {
-  .content {
-    padding: $spacing-sm;
+.default { background: $color-bg-primary; }
+.outlined { 
+  background: transparent; 
+  &::before { 
+    padding: 2px;
+    background: linear-gradient(135deg, $color-primary-light, $color-accent); 
   }
 }
-
-.padding-md {
-  .content {
-    padding: $spacing-md;
-  }
+.elevated { 
+  background: $color-bg-primary; 
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
-.padding-lg {
-  .content {
-    padding: $spacing-lg;
-  }
-}
+.padding-none .content { padding: 0; }
+.padding-sm .content { padding: $spacing-sm; }
+.padding-md .content { padding: $spacing-md; }
+.padding-lg .content { padding: $spacing-lg; }
 
-// Hoverable
 .hoverable {
   cursor: pointer;
   
   &:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
-    border-color: $color-primary-light;
+    transform: translateY(-6px) rotate(-1deg);
+    box-shadow: 0 16px 40px rgba($color-primary, 0.15);
+    
+    &::before { 
+      background: linear-gradient(135deg, $color-primary, $color-accent); 
+    }
   }
 }
 
-// Sections
 .header {
-  padding: $spacing-md;
+  padding: $spacing-md $spacing-lg;
   border-bottom: 1px solid $color-border-light;
   
-  &:empty {
-    display: none;
-  }
+  &:empty { display: none; }
 }
 
-.content {
-  flex: 1;
-}
+.content { flex: 1; position: relative; z-index: 1; }
 
 .footer {
-  padding: $spacing-md;
+  padding: $spacing-md $spacing-lg;
+  background: rgba($color-bg-secondary, 0.5);
   border-top: 1px solid $color-border-light;
-  background: $color-bg-secondary;
-  border-radius: 0 0 $radius-lg $radius-lg;
   
-  &:empty {
-    display: none;
-  }
+  &:empty { display: none; }
 }

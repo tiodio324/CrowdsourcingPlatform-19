@@ -12,7 +12,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: transparent;
+    background: rgba(0, 0, 0, 0.6);
     z-index: $z-modal-backdrop - 1;
   }
 }
@@ -79,7 +79,7 @@
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: $spacing-xs;
+  gap: $spacing-sm;
 }
 
 .navItem {
@@ -89,25 +89,26 @@
   padding: $spacing-md $spacing-lg;
   background: transparent;
   border: none;
-  border-radius: $radius-lg;
+  border-radius: $radius-xl;
   color: $color-text-secondary;
   font-family: $font-family-secondary;
   font-size: $font-size-base;
   font-weight: $font-weight-medium;
   text-align: left;
   cursor: pointer;
-  transition: all $transition-fast;
+  transition: all $transition-base;
   
   &:hover {
     background: rgba($color-primary, 0.08);
     color: $color-primary;
-    transform: translateX(4px);
+    transform: translateX(8px) scale(1.02);
   }
   
   &.active {
     background: linear-gradient(90deg, $color-primary 0%, $color-accent 100%);
     color: $color-text-inverse;
-    box-shadow: 0 4px 16px rgba($color-primary, 0.3);
+    box-shadow: 0 6px 20px rgba($color-primary, 0.35);
+    transform: translateX(4px);
     
     .icon {
       color: $color-text-inverse;
@@ -145,9 +146,4 @@
   font-size: $font-size-xs;
   color: $color-text-muted;
   margin: 0;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
 }

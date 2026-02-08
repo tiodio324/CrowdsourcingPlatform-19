@@ -6,7 +6,7 @@ import { IdeaFormData, getIdeaStatusLabel, getIdeaStatusColor } from '@/types';
 import styles from './IdeasPage.module.scss';
 
 export const IdeasPage = observer(() => {
-  const { filteredIdeas, activeCategories, ideasLoading, setFilter, createIdea, voteIdea, getCategoryById } = dataStore;
+  const { filteredIdeas, activeCategories, ideasLoading, filters, setFilter, createIdea, voteIdea, getCategoryById } = dataStore;
   const { isContributor } = authStore;
   const [searchValue, setSearchValue] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -25,8 +25,8 @@ export const IdeasPage = observer(() => {
       <div className={styles.header}><h1 className={styles.title}>Идеи</h1>{isContributor && <Button variant="primary" onClick={() => setIsModalOpen(true)}>Предложить идею</Button>}</div>
       <div className={styles.filters}>
         <Input placeholder="Поиск..." value={searchValue} onChange={(e) => setSearchValue(e.target.value)} className={styles.searchInput} />
-        <Select options={categoryOptions} value="" onChange={(e) => setFilter('categoryId', e.target.value || undefined)} />
-        <Select options={statusOptions} value="" onChange={(e) => setFilter('status', e.target.value || undefined)} />
+        <Select options={categoryOptions} value={filters.categoryId || ''} onChange={(e) => setFilter('categoryId', e.target.value || undefined)} placeholder="" />
+        <Select options={statusOptions} value={filters.status || ''} onChange={(e) => setFilter('status', e.target.value || undefined)} placeholder="" />
       </div>
       {ideasLoading ? <div className={styles.loading}>Загрузка...</div> : filteredIdeas.length === 0 ? <div className={styles.empty}>Идеи не найдены</div> : (
         <div className={styles.grid}>

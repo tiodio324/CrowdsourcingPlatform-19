@@ -6,6 +6,7 @@
   @include button-base;
   position: relative;
   overflow: hidden;
+  font-weight: $font-weight-bold;
   
   &:focus-visible {
     outline: 2px solid $color-primary;
@@ -20,25 +21,24 @@
   box-shadow: 0 4px 16px rgba($color-primary, 0.3);
   
   &:hover:not(:disabled) {
-    background: linear-gradient(90deg, $color-primary-dark 0%, $color-accent 100%);
-    box-shadow: 0 6px 24px rgba($color-primary, 0.4);
-    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba($color-primary, 0.4);
+    transform: translateY(-4px) rotate(-1deg);
   }
   
   &:active:not(:disabled) {
-    transform: translateY(0);
-    box-shadow: 0 2px 8px rgba($color-primary, 0.3);
+    transform: translateY(-2px) rotate(0deg);
   }
 }
 
 .secondary {
-  background: rgba($color-primary, 0.08);
+  background: transparent;
   color: $color-primary;
-  border: 1px solid rgba($color-primary, 0.3);
+  border: 2px solid $color-primary;
   
   &:hover:not(:disabled) {
-    background: rgba($color-primary, 0.15);
-    border-color: $color-primary;
+    background: linear-gradient(90deg, $color-primary 0%, $color-accent 100%);
+    color: $color-text-inverse;
+    border-color: transparent;
   }
 }
 
@@ -74,24 +74,21 @@
 
 // Sizes
 .sm {
-  padding: 8px 20px;
+  padding: 10px 20px;
   font-size: $font-size-sm;
   border-radius: $radius-xl;
-  font-weight: $font-weight-medium;
 }
 
 .md {
-  padding: 12px 28px;
+  padding: 12px 26px;
   font-size: $font-size-base;
   border-radius: $radius-xl;
-  font-weight: $font-weight-medium;
 }
 
 .lg {
-  padding: 16px 36px;
+  padding: 16px 32px;
   font-size: $font-size-md;
-  border-radius: $radius-full;
-  font-weight: $font-weight-semibold;
+  border-radius: $radius-xl;
 }
 
 // States

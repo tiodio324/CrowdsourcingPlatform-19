@@ -13,8 +13,7 @@
   background: linear-gradient(90deg, $color-primary 0%, $color-accent 100%);
   color: $color-text-inverse;
   z-index: $z-fixed;
-  box-shadow: 0 4px 24px rgba($color-primary, 0.25);
-  backdrop-filter: blur(8px);
+  box-shadow: 0 6px 30px rgba($color-primary, 0.3);
   
   @include mobile {
     padding: 0 $spacing-md;
@@ -28,21 +27,22 @@
 
 .menuButton {
   display: none;
-  padding: $spacing-sm;
-  background: transparent;
+  padding: $spacing-md;
+  background: rgba(255, 255, 255, 0.2);
   border: none;
   color: $color-text-inverse;
   cursor: pointer;
-  border-radius: $radius-md;
-  transition: background $transition-fast;
+  border-radius: $radius-full;
+  transition: all $transition-fast;
   
   &:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.3);
+    transform: rotate(90deg);
   }
   
   svg {
-    width: 24px;
-    height: 24px;
+    width: 22px;
+    height: 22px;
   }
   
   @include mobile-tablet {
@@ -59,15 +59,16 @@
 }
 
 .logoIcon {
-  width: 28px;
-  height: 28px;
-  color: $color-accent;
+  width: 30px;
+  height: 30px;
+  color: $color-text-inverse;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
 }
 
 .logoText {
   font-family: $font-family-primary;
   font-size: $font-size-lg;
-  font-weight: $font-weight-semibold;
+  font-weight: $font-weight-bold;
   letter-spacing: 0.5px;
   
   @include mobile {
@@ -75,18 +76,29 @@
   }
 }
 
-.title {
+.center {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  font-family: $font-family-primary;
-  font-size: $font-size-xl;
-  font-weight: $font-weight-medium;
-  margin: 0;
   
   @include mobile {
     display: none;
   }
+}
+
+.titleBadge {
+  padding: $spacing-sm $spacing-xl;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: $radius-full;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.title {
+  font-family: $font-family-primary;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  margin: 0;
 }
 
 .right {
@@ -101,10 +113,11 @@
 
 .role {
   font-size: $font-size-sm;
-  color: $color-primary-lighter;
-  padding: $spacing-xs $spacing-sm;
-  background: rgba(255, 255, 255, 0.1);
+  color: $color-text-inverse;
+  padding: $spacing-xs $spacing-md;
+  background: rgba(255, 255, 255, 0.25);
   border-radius: $radius-full;
+  font-weight: $font-weight-semibold;
   
   @include mobile {
     display: none;
@@ -112,10 +125,12 @@
 }
 
 .headerButton {
-  color: $color-accent !important;
-  border-color: $color-accent !important;
+  background: rgba(255, 255, 255, 0.2) !important;
+  color: $color-text-inverse !important;
+  border: 2px solid rgba(255, 255, 255, 0.4) !important;
+  font-weight: $font-weight-bold !important;
   
   &:hover {
-    background: rgba($color-accent, 0.1) !important;
+    background: rgba(255, 255, 255, 0.3) !important;
   }
 }
